@@ -1,0 +1,341 @@
+:root{
+   --primarycolor : #342452;
+   --secondarycolor : #4E3764;
+   --white: #FFFFFF;
+   --primarytheme : #FFFFFF;
+   --filledbtn: #6647CD;
+   --grey : #cccccc;
+   --darkgrey : #636668;
+   --popular_green:#008000;
+    --red:#f80808;
+    font-size: 16px;
+    --textcolor : #342452;
+    --pagenation : #6647CD;
+    --modalbackground :  rgba(0,0,0,0.4);
+    
+}
+
+@font-face{
+    font-family: nexa-light;
+    src: url(../fonts/Nexa-Light.otf);
+  }
+  @font-face{
+    font-family: nexa-bold;
+    src: url(../fonts/Nexa-Bold.otf);
+  }
+
+  *{
+    box-sizing :border-box;
+  }
+
+h1,h2,h3,h4,h5,h6{
+    font-family: nexa-bold;
+    line-height: 1.2;
+    color: var(--textcolor);
+}
+
+h1{
+    font-size: 1.8rem;
+}
+
+h2{
+    font-size: 1.8rem;  
+}
+
+h3{
+    font-size: 1.62rem;  
+}
+
+h4{
+    font-size: 1.40rem;   
+}
+
+h5{
+    font-size: 1.21rem; 
+} 
+
+h6{
+    font-size: 1.05rem;   
+}
+i{
+    font-size: 1rem;
+}
+p{
+    font-family: nexa-light;
+    font-size: 1rem; 
+    line-height: 1.4;
+    color: var(--textcolor);
+}
+
+ul li,ol li{
+    font-family: nexa-light;
+    font-size: 0.9rem; 
+    line-height: 1.2;
+    color: var(--textcolor);
+}
+  
+input{
+    padding: 0.625rem;
+    margin-bottom: 0.625rem;
+    width: 100%;
+    font-size: 0.9rem;
+    font-family: nexa-light;
+    outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: var(--lightgrey);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input[type=number]{
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+input[type="checkbox"]{
+    width:2rem;
+    margin:0;
+}
+::placeholder{
+    font-family: nexa-bold;
+    color: var(--grey);
+    font-size: 0.9rem;
+    
+}
+small{
+    color: var(--darkblue);
+    font-family: nexa-light;
+    font-size: 1rem;
+}
+time{
+    font-family: nexa-light;
+    color: var(--darkblue);
+    font-size: 0.9rem;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+button{
+    font-family: nexa-bold;
+    font-size: 1rem;
+    padding:0.625rem 1rem;
+    border: 1px solid var(--darkblue);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.dark-button{
+    color: var(--white);
+    background-color: var(--filledbtn);
+}
+
+.light-button{
+    color: var(--white);
+    background-color: var(--primarycolor);
+}
+
+.light-blue_button{
+    color: var(--white);
+    background-color: var(--button_blue);
+    border: none;
+}
+
+section{
+    padding: 0.625rem;
+}
+
+select{
+    padding: 0.425rem 0.625rem;
+    font-size: 0.95rem;
+    font-family: nexa-light;
+    background-color: var(--lightgrey);
+    color: var(--darkblue);
+    outline: none;
+}
+option{
+    font-family: nexa-light;
+    color: var(--darkblue);
+    padding: 10px;
+}
+label{
+    font-family: nexa-light;
+    font-size: 0.8rem;
+    color: var(--darkblue);
+
+}
+
+a{
+    font-family: nexa-light;
+    font-size: 0.8rem;
+    text-decoration:none;
+    color: var(--darkblue);
+}
+
+textarea{
+    border: 1px solid var(--lightgrey);
+    margin-bottom: 20px;
+    outline: none;
+    font-family: nexa-light;
+    font-size: 0.8rem;
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px){
+    
+    h1{
+        font-size: 2rem;
+    }
+    
+    h2{
+        font-size: 1.97rem;  
+    }
+    
+    h3{
+        font-size: 1.72rem;  
+    }
+    
+    h4{
+        font-size: 1.50rem;   
+    }
+    
+    h5{
+        font-size: 1.31rem;  
+    }
+    h6{
+        font-size: 1.15rem;   
+    }
+    
+    p{
+        font-size: 1.05rem; 
+        line-height: 1.5;
+    }
+    
+    ul li,ol li{
+        font-size: 0.925rem; 
+        line-height: 1.4; 
+    }
+      
+    input{
+        padding: 0.725rem;
+        margin-bottom: 0.725rem;
+    }
+    input[type=date]{
+        
+        font-size:1rem ;
+    }
+    ::placeholder{
+        font-size: 0.8rem;
+        
+    }    
+    button{
+        font-size: 1rem;
+        padding: 0.625rem 1rem;
+    }
+
+    section{
+        padding: 0.725rem;
+    }
+    
+    select{
+        padding: 0.725rem;
+        font-size: 1rem;
+    }
+    a{
+        font-size: 1rem;
+    }
+    small{
+        font-size: 1.1rem;
+    }
+    textarea{
+        font-size: 1rem;
+    }
+    label{
+        font-family: nexa-light;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+@media only screen and (min-width:1024px) {    
+    h1{
+        font-size: 2.5rem;
+    }
+    
+    h2{
+        font-size: 2.3rem;  
+    }
+    
+    h3{
+        font-size: 1.8rem;  
+    }
+    
+    h4{
+        font-size: 1.6rem;   
+    }
+    
+    h5{
+        font-size: 1.4rem;  
+    }
+    h6{
+        font-size: 1.08rem;   
+    }
+    
+    p{
+        font-size: 1.3rem; 
+        line-height: 1.4;
+    }
+    
+    ul li,ol li{
+        font-size: 1rem; 
+        line-height: 1.2; 
+    }
+      
+    input{
+        padding: 0.725rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+    input[type=date]{
+    
+        font-size: 1.1rem;
+    }
+    
+    ::placeholder{
+        font-size: 1rem;
+    }
+
+    button{
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+    small{
+        font-size: 1.2rem;
+    }
+    section{
+        padding: 1rem;
+    }
+    
+    select{
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+    }
+    a{
+        font-size: 1.2rem;
+        
+    }
+    time{
+        font-size: 1rem;
+    }
+    label{
+        font-family: nexa-light;
+        font-size: 1rem;
+    }
+    textarea{
+        font-size: 1.2rem;
+    }
+}
