@@ -1,0 +1,114 @@
+.homebtn{
+    color: white;
+    border: 1px solid white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+.sub-heading{
+    color: black;
+    padding: 1rem;
+    margin-bottom: 0;
+
+}
+.para{
+color: black;
+margin-bottom: 1rem;
+padding: 0 1rem;
+}
+
+figure{
+padding: 0 1rem;
+figcaption{
+    font-family: nexa-bold;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: grey;
+}
+
+}
+.bggrey{
+    background-color: rgba(242, 242, 242, 1);
+    padding: 1rem;
+    margin: 0 1rem;
+    overflow-x: scroll;
+    white-space: break-spaces;
+    margin-bottom: 1rem;
+
+}
+.bggrey::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .bggrey{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+.morecard{
+    border: 1px solid rgba(242, 242, 242, 1);
+    display: flex;
+    margin: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    p{
+    padding: 1rem;
+    width: 95%;
+    white-space: break-spaces;
+height: 10rem;
+  overflow-y: scroll;
+
+    }
+    p::-webkit-scrollbar {
+        display: none;
+      }
+      
+      /* Hide scrollbar for IE, Edge and Firefox */
+      p {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+    figure{
+        width: 20rem;
+        height: 10rem;
+        padding: 0;
+    }
+}
+
+.heading{
+    .sub-heading{
+        text-align: center;
+        border-bottom: 1px solid grey;
+    }
+}
+.comment{
+    border-bottom: 1px solid grey;
+
+}
+@media only screen and (min-width:1024px) { 
+    main{
+        padding:2rem 10rem;
+    }
+}
+@media only screen and (min-width:1440px) {   
+    main{
+        padding:2rem 25rem;
+    }
+.homebtn{
+    font-size: 1.2rem;
+
+}
+.sub-heading{
+    text-align: left;
+}
+.para{
+    margin-bottom: 1.5rem;
+    }
+    figure{
+        figcaption{
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+}

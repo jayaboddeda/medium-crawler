@@ -19,6 +19,7 @@ const post = Object.keys(response.payload.references.Post)
 
 const user = Object.keys(response.payload.references.User)
 for(let i=0;i<post.length;i++){
+    var postid = response.payload.references.Post[post[i]].id
 var image = response.payload.references.Post[post[i]].virtuals.previewImage.imageId
 var title = response.payload.references.Post[post[i]].title
 var readingtime = Math.round(response.payload.references.Post[post[i]].virtuals.readingTime)
@@ -38,7 +39,7 @@ for(let j=0; j<tagsobject.length;j++){
 tagarr.push(tagsobject[j].name)
 }
 tags[i] = tagarr
-info[i] = {image,title,readingtime,author,tagarr}
+info[i] = {postid,image,title,readingtime,author,tagarr}
 }
 }
 }
@@ -48,10 +49,34 @@ res.send(payload)
 
 }
 
+const post = async (req,res) =>{
 
+    console.log(req.query.id)
+    const response = await fetch(`https://medium.com/_/api/posts/${req.query.id}`)
+    .then(res => res.text())
+    .then(json => JSON.parse(json.slice(16)));
+    let postdesc = response.payload.value.content.bodyModel.paragraphs
+    const commentsresponse = await fetch(`https://medium.com/_/api/posts/${req.query.id}/responsesStream?filter=other`)
+    .then(res => res.text())
+    .then(json => JSON.parse(json.slice(16)));
+    const post = Object.keys(commentsresponse.payload.references.Post)
+const info =[]
+    for(let i=1;i<post.length;i++){
+        let comments = commentsresponse.payload.references.Post[post[i]].previewContent.bodyModel.paragraphs[0].text
+        let cid = commentsresponse.payload.references.Post[post[i]].creatorId
+        let name = commentsresponse.payload.references.User[cid].name
+        info[i]={name,comments}
+    }
+ console.log(info)   
+    res.render("post",{
+        postdesc,
+        info
+    })
+}
 
 
 
 module.exports = {
-    search
+    search,
+    post
 }

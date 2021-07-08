@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medium Crawler</title>
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/post.css">
+</head>
+<body>
+    <header>
+        <h1>Medium Crawler</h1>
+        <a href="/"class="homebtn"> Back to Home</a>
+    </header>
+   <main>
+       <% for (let i=0;i < postdesc.length; i++){%>
+        <% if(postdesc[i].type == 3){ %>
+            <h2 class="sub-heading"><%= postdesc[i].text %></h2>
+       <% }else if(postdesc[i].type == 4){ %>
+        <figure>
+           <img src="https://miro.medium.com/max/600/<%=postdesc[i].metadata.id%>" alt="<%= postdesc[i].text %>">
+           <figcaption><%= postdesc[i].text %></figcaption>
+        </figure>
+        <% }else if(postdesc[i].type == 8){ %>
+            <p class="para bggrey"><%= postdesc[i].text %></p>
+            <% }else if(postdesc[i].type == 14){ %>
+                <a href='<%= postdesc[i].markups[0].href %>'>
+                <div class="morecard">
+                    <p><%= postdesc[i].text %></p>
+                    <figure>
+                        <img src="https://miro.medium.com/max/600/<%=postdesc[i].mixtapeMetadata.thumbnailImageId%>" alt="">
+                    </figure>
+                </div>
+            </a>
+       <% }else if(postdesc[i].type == 1){ %>
+            <p class="para"><%= postdesc[i].text %></p>
+        
+      <% } }%>
+
+      <section class="commentssection">
+          <div class="heading">
+          <h3 class="sub-heading">Comments</h3>
+        </div>
+          <% for (let j=1;j < info.length;j++ ){%>
+          <div class="comment">
+              <h6 class="sub-heading"><%=info[j].name%></h6>
+              <p class="para"><%=info[j].comments%></p>
+          </div>
+          <%}%>
+      </section>
+   </main> 
+</body>
+
+</html>

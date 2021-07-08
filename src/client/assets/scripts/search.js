@@ -20,7 +20,6 @@ if(relatedtags){
     } 
 }
 let starttime = new Date().getTime()
-console.log(tagvalue)
     const response = await fetch('/search?tag='+tagvalue)
     response.text().then((info)=>{
         let userinfo = JSON.parse(info)
@@ -47,9 +46,10 @@ console.log(tagvalue)
                <li>Author : ${userinfo[0].info[i].author}</li>
                <li>Reading Time :  ${userinfo[0].info[i].readingtime} min Read</li>
                <li>Time to crawl : ${endtime - starttime} ms</li>
-               <li>
+               <a href="/post?id=${userinfo[0].info[i].postid}"><li>
                    Click to read posts
-                   </li>
+                  
+                   </li> </a>
                <li>
                    Related Tags : 
                    <ul class="posttags${i} posttags relatedtags">
