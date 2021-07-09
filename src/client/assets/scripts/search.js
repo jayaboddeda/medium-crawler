@@ -1,10 +1,19 @@
 
-const getinfo = async(tag) =>{
-    const inputvalue = document.getElementById('tagsearch')
+const load = document.getElementsByClassName('load')[0]
+const inputvalue = document.getElementById('tagsearch')
+
+ 
+
+
+const getinfo = async(tag,limit) =>{
     let relatedtags = document.getElementsByClassName('relatedtags')[0]
     let postpreview = document.getElementsByClassName('postpreview')[0]
     tagvalue = tag || inputvalue.value 
     inputvalue.value = tagvalue
+    
+
+    
+if(!limit){
 if(postpreview){
     let child = postpreview.lastElementChild; 
     while (child) {
@@ -12,6 +21,8 @@ if(postpreview){
         child = postpreview.lastElementChild;
     }
 }
+}
+
 if(relatedtags){
     let child = relatedtags.lastElementChild; 
     while (child) {
@@ -19,11 +30,17 @@ if(relatedtags){
         child = relatedtags.lastElementChild;
     } 
 }
+
 let starttime = new Date().getTime()
-    const response = await fetch('/search?tag='+tagvalue)
+if(limit){
+  var  url = '/search?tag='+tagvalue+'&limit='+limit
+}
+else{
+    var  url = '/search?tag='+tagvalue 
+}
+    const response = await fetch(url)
     response.text().then((info)=>{
         let userinfo = JSON.parse(info)
-        console.log(userinfo[0])
        for(let i=0;i<userinfo[0].relatedTags.length;i++){
            let span = document.createElement('span')
            span.setAttribute("onclick",`getinfo('${userinfo[0].relatedTags[i]}')`)
@@ -58,11 +75,11 @@ let starttime = new Date().getTime()
            </ul>
            </li>
            </ul>
-       </figcaption>`
+       </figcaption>
+       `
        card.innerHTML=info
        postpreview.appendChild(card)
        const posttags = document.getElementsByClassName('posttags'+i)[0]
-    //    console.log(posttags)
        for(let j=0; j<userinfo[0].info[i].tagarr.length;j++){
        const tagli = document.createElement('li')
        tagli.setAttribute("onclick",`getinfo('${userinfo[0].info[i].tagarr[j]}')`)
@@ -74,8 +91,17 @@ let starttime = new Date().getTime()
        }
 
        }
-    
+       const nxt = document.getElementsByClassName('nextbtn')[0]
+       nxt.style.display = "flex"
+       nxt.setAttribute("onclick",`getinfo('${inputvalue.value}','${userinfo[0].next}')`)
+       if(!userinfo[0].next){
+       nxt.style.display = "none"
 
+       }
+   
     })
 }
+
+
+
 

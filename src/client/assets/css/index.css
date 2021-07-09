@@ -130,6 +130,23 @@ h2 {
   cursor: pointer;
 }
 
+.load {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nextbtn {
+  display: none;
+  margin-bottom: 2rem;
+}
+
 @media only screen and (min-width: 1024px) {
   header {
     display: -webkit-box;

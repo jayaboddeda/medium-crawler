@@ -1,8 +1,14 @@
 const fetch = require('node-fetch')
 
 const search = async (req,res) =>{
-console.log(req.query.tag)
- const response = await fetch(`https://medium.com/_/api/tags/${req.query.tag}/stream?limit=10`)
+let url
+if(req.query.limit){
+url = `https://medium.com/_/api/tags/${req.query.tag}/stream?limit=10&ignoredIds=${req.query.limit}`
+}
+else{
+    url = `https://medium.com/_/api/tags/${req.query.tag}/stream?limit=10`
+}
+ const response = await fetch(url)
     .then(res => res.text())
     .then(json => JSON.parse(json.slice(16)));
     let info = []
@@ -30,8 +36,8 @@ for(let k=0;k<user.length;k++){
 var author = response.payload.references.User[user[k]].name
 
 
-    // console.log(author)
 }
+
 
 
 let tagarr =[]
@@ -42,8 +48,14 @@ tags[i] = tagarr
 info[i] = {postid,image,title,readingtime,author,tagarr}
 }
 }
+var prev = response.payload.paging.previous.ignoredIds
+
+if( response.payload.paging.next){
+    var next = response.payload.paging.next.ignoredIds
 }
-let payload = [{relatedTags,info}]
+
+}
+let payload = [{relatedTags,info,next,prev}]
 
 res.send(payload)
 
@@ -51,7 +63,6 @@ res.send(payload)
 
 const post = async (req,res) =>{
 
-    console.log(req.query.id)
     const response = await fetch(`https://medium.com/_/api/posts/${req.query.id}`)
     .then(res => res.text())
     .then(json => JSON.parse(json.slice(16)));
@@ -67,7 +78,6 @@ const info =[]
         let name = commentsresponse.payload.references.User[cid].name
         info[i]={name,comments}
     }
- console.log(info)   
     res.render("post",{
         postdesc,
         info
